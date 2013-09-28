@@ -61,3 +61,18 @@
 		    d))))
   (datum->syntax syntax `(tar ,celldata))))
 
+(define (noun->string c)
+ (let loop ((c c))
+  (if (cell? c)
+   (string-join
+    (map noun->string (improper-list->list c))
+    " "
+    #:before-first "["
+    #:after-last "]")
+   (format "~a" c))))
+
+(define (improper-list->list l)
+ (if (cons? l)
+  (cons (car l) (improper-list->list (cdr l)))
+  (cons l '())))
+

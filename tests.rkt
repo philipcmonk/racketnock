@@ -119,3 +119,9 @@
   (nock-eval [42 [8 [1 0] 8 [1 6 [5 [0 7] 4 0 6] [0 6] 9 2 [0 2] [4 0 6] 0 7] 9 2 0 1]])
   41))
 
+(test-case
+ "noun->string"
+ (check-equal?
+  (noun->string (cell (cell 0 1) 2 3 (cell 4 (cell 5 6 (cell 7 8) 9)) (cell 9 10)))
+  "[[0 1] 2 3 [4 5 6 [7 8] 9] 9 10]")) 
+
